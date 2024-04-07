@@ -1,0 +1,4 @@
+-First we need to Update Package PostGreSql after download project
+-Remove old migration and make new migration
+-In the appsetting.json change the port number with your specific port number of postgrsql
+-make update-database
