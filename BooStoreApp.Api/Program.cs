@@ -14,7 +14,7 @@ builder.Host.UseSerilog((ctx,lc)=>
 lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration)
 );
 builder.Services.AddDbContext<Context>(option =>
-option.UseNpgsql(builder.Configuration.GetConnectionString("contextConnection")));
+option.UseNpgsql(builder.Configuration.GetConnectionString("OrganisationServiceConnectionString")));
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", b => b.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
