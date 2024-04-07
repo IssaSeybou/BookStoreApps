@@ -1,3 +1,5 @@
+using BooStoreApp.Api.DataContext;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,8 @@ builder.Services.AddSwaggerGen();
 builder.Host.UseSerilog((ctx,lc)=>
 lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration)
 );
+builder.Services.AddDbContext<Context>(option =>
+option.UseNpgsql(builder.Configuration.GetConnectionString("contextConnection")));
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", b => b.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
