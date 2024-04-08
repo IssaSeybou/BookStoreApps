@@ -1,4 +1,5 @@
 using BooStoreApp.Api.DataContext;
+using BooStoreApp.Api.Models.Dto;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -19,6 +20,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", b => b.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
 });
+builder.Services.AddScoped(typeof(ResponseDto));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
